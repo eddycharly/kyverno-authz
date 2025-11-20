@@ -42,10 +42,6 @@ helm install kyverno-authz-server --namespace kyverno --create-namespace kyverno
 | config.http.outputExpression | string | `""` | CEL: expression applied to outgoing responses |
 | config.sources.kube | bool | `true` | Enable in-cluster kubernetes policy source |
 | config.sources.external | list | `[]` | External policy sources |
-| config.sources.controlPlane.address | string | `""` | Control plane address (leave empty for standalone mode) |
-| config.sources.controlPlane.reconnectWait | string | `"3s"` | Duration to wait before retrying connecting to the control plane |
-| config.sources.controlPlane.maxDialInterval | string | `"8s"` | Duration to wait before stopping attempts of sending a policy to a client |
-| config.sources.controlPlane.healthCheckInterval | string | `"30s"` | Interval for sending health checks |
 | config.allowInsecureRegistry | bool | `false` | Allow insecure registry for pulling policy images |
 | config.imagePullSecrets | list | `[]` | Image pull secrets for fetching policies from OCI registries |
 | authzServer.deployment.replicas | int | `nil` | Desired number of pods |
