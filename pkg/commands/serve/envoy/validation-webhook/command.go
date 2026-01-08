@@ -5,8 +5,6 @@ import (
 	"fmt"
 
 	authv3 "github.com/envoyproxy/go-control-plane/envoy/service/auth/v3"
-	vpolv1 "github.com/kyverno/api/api/policies.kyverno.io/v1"
-	vpolv1alpha1 "github.com/kyverno/api/api/policies.kyverno.io/v1alpha1"
 	vpolv1beta1 "github.com/kyverno/api/api/policies.kyverno.io/v1beta1"
 	"github.com/kyverno/kyverno-authz/apis/v1alpha1"
 	vpolcompiler "github.com/kyverno/kyverno-authz/pkg/engine/compiler"
@@ -52,13 +50,7 @@ func Command() *cobra.Command {
 					defer group.Wait()
 					// create a controller manager
 					scheme := runtime.NewScheme()
-					if err := vpolv1alpha1.Install(scheme); err != nil {
-						return err
-					}
 					if err := vpolv1beta1.Install(scheme); err != nil {
-						return err
-					}
-					if err := vpolv1.Install(scheme); err != nil {
 						return err
 					}
 					mgr, err := ctrl.NewManager(config, ctrl.Options{
